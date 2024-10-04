@@ -27,8 +27,15 @@ std::vector<AlumnoTupla> GuardarCalificaciones()
 
 
 
-void CalcularCalificacionPromedio()
+float CalcularCalificacionPromedio(std::vector<AlumnoTupla> alumnos)
 {
+    float total = 0.0f;
+    for (auto [nombre, nota] : alumnos)
+    {
+        total += nota;
+    }
+    const float promedio = total / alumnos.size();
+    return promedio;
 }
 
 void ObtenerCantidadSuperiorPromedio()

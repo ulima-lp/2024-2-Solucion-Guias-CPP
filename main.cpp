@@ -2,7 +2,10 @@
 
 int main()
 {
-    std::vector<AlumnoTupla> lista = GuardarCalificaciones();
-    ImprimirAlumnos(lista);
+    auto lista = GuardarCalificaciones();
+    //ImprimirAlumnos(lista);
+    const float promedio = CalcularCalificacionPromedio(lista);
+    std::cout << "Promedio: " << promedio << '\n';
+
     return 0;
 }

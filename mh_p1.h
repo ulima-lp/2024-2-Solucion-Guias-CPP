@@ -5,7 +5,7 @@
 using AlumnoTupla = std::tuple<std::string, float>;
 
 std::vector<AlumnoTupla> GuardarCalificaciones();
-void CalcularCalificacionPromedio();
+float CalcularCalificacionPromedio(std::vector<AlumnoTupla> alumnos);
 void ObtenerCantidadSuperiorPromedio();
 void ImprimirEstudianteMayorNota();
 
