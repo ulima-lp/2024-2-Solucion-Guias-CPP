@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<string>
 
 enum class Sexo
 {
@@ -23,6 +24,7 @@ public:
 
 class LibretaContactos
 {
+protected:
     std::vector<Contacto>* contactos;
 public:
     LibretaContactos();

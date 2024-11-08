@@ -24,3 +24,22 @@ void LibretaContactos::AgregarContacto(
 
     contactos->push_back(contacto);
 }
+
+void LibretaContactosXML::ImprimirDatos()
+{
+    std::cout << "<contactos>" << '\n';
+    for (const auto& contacto : *contactos)
+    {
+        std::cout << "<contacto nombre='" << contacto.nombre << "' "
+            << "edad='" << contacto.edad 
+            << "' telefono='" << contacto.telefono << "' "
+            << "email='" << contacto.email 
+            <<  "' sexo='" << (int)contacto.sexo << "' />" << '\n';
+    }
+    std::cout << "</contactos>" << '\n';
+}
+
+
+void LibretaContactosJSON::ImprimirDatos()
+{
+}
