@@ -27,7 +27,7 @@ namespace ULContactos
         contactos->push_back(contacto);
     }
 
-    Contacto* LibretaContactos::BuscarPorNombre(std::string nombre)
+    Contacto* LibretaContactos::BuscarPorNombre(std::string nombre) const
     {
         for (auto& contacto : *contactos)
         {
@@ -73,7 +73,7 @@ namespace ULContactos
         contacto.email = email;
     }
 
-    void LibretaContactosXML::ImprimirDatos()
+    void LibretaContactosXML::ImprimirDatos() const
     {
         std::cout << "<contactos>" << '\n';
         for (const auto& contacto : *contactos)
@@ -87,7 +87,7 @@ namespace ULContactos
         std::cout << "</contactos>" << '\n';
     }
 
-    void LibretaContactosXML::FiltrarContactosPorSexo(Sexo sexo)
+    void LibretaContactosXML::FiltrarContactosPorSexo(Sexo sexo) const
     {
         for (const auto& contacto : *contactos)
         {
@@ -111,7 +111,7 @@ namespace ULContactos
         'sexo' : 0
     }
     */
-    void LibretaContactosJSON::ImprimirDatos()
+    void LibretaContactosJSON::ImprimirDatos() const
     {
         std::cout << "[" << '\n';
         for (const auto& contacto : *contactos)
@@ -126,7 +126,7 @@ namespace ULContactos
         }
         std::cout << "]" << '\n';
     }
-    void LibretaContactosJSON::FiltrarContactosPorSexo(Sexo sexo)
+    void LibretaContactosJSON::FiltrarContactosPorSexo(Sexo sexo) const
     {
         std::cout << "[" << '\n';
         for (const auto& contacto : *contactos)

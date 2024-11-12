@@ -34,26 +34,26 @@ namespace ULContactos
             std::string nombre, int edad, 
             std::string telefono, std::string email,
             Sexo sexo);
-        virtual void ImprimirDatos() = 0;
-        Contacto* BuscarPorNombre(std::string nombre);
+        virtual void ImprimirDatos() const  = 0;
+        Contacto* BuscarPorNombre(std::string nombre) const;
         void EliminarPorNombre(std::string nombre);
         void ModificarContacto(
             Contacto& contacto, std::string nombre, 
             int edad, std::string telefono, std::string email);
-        virtual void FiltrarContactosPorSexo(Sexo sexo) = 0;
+        virtual void FiltrarContactosPorSexo(Sexo sexo) const = 0;
     };
 
     class LibretaContactosXML : public LibretaContactos
     {
     public:
-        void ImprimirDatos() override;
-        void FiltrarContactosPorSexo(Sexo sexo) override;
+        void ImprimirDatos() const override ;
+        void FiltrarContactosPorSexo(Sexo sexo) const override;
     };
 
     class LibretaContactosJSON : public LibretaContactos
     {
     public:
-        void ImprimirDatos() override;
-        void FiltrarContactosPorSexo(Sexo sexo) override;
+        void ImprimirDatos()const  override;
+        void FiltrarContactosPorSexo(Sexo sexo) const override;
     };
 }
