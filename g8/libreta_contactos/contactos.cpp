@@ -27,6 +27,52 @@ namespace ULContactos
         contactos->push_back(contacto);
     }
 
+    Contacto* LibretaContactos::BuscarPorNombre(std::string nombre)
+    {
+        for (auto& contacto : *contactos)
+        {
+            if (contacto.nombre == nombre)
+            {
+                // Se encontro contacto
+                return &contacto;
+            }
+        }
+
+        return nullptr;
+    }
+
+    void LibretaContactos::EliminarPorNombre(std::string nombre)
+    {
+        int indice = 0;
+        bool encontrado = false;
+        for (const Contacto& contacto : *contactos)
+        {
+            if (contacto.nombre == nombre)
+            {
+                encontrado = true;
+                break;
+            }
+            indice++;
+        }
+
+        if (encontrado)
+        {
+            // Eliminar
+            auto iteratorInicial = contactos->begin();
+            contactos->erase(iteratorInicial + indice);
+        }
+    }
+
+    void LibretaContactos::ModificarContacto(
+        Contacto& contacto, std::string nombre, int edad, 
+        std::string telefono, std::string email)
+    {
+        contacto.nombre = nombre;
+        contacto.edad = edad;
+        contacto.telefono = telefono;
+        contacto.email = email;
+    }
+
     void LibretaContactosXML::ImprimirDatos()
     {
         std::cout << "<contactos>" << '\n';
@@ -41,6 +87,20 @@ namespace ULContactos
         std::cout << "</contactos>" << '\n';
     }
 
+    void LibretaContactosXML::FiltrarContactosPorSexo(Sexo sexo)
+    {
+        for (const auto& contacto : *contactos)
+        {
+            if (contacto.sexo == sexo)
+            {
+                std::cout << "<contacto nombre='" << contacto.nombre << "' "
+                    << "edad='" << contacto.edad 
+                    << "' telefono='" << contacto.telefono << "' "
+                    << "email='" << contacto.email 
+                    <<  "' sexo='" << (int)contacto.sexo << "' />" << '\n';
+            }
+        }
+    }
 
     /*
     {
@@ -66,5 +126,22 @@ namespace ULContactos
         }
         std::cout << "]" << '\n';
     }
+    void LibretaContactosJSON::FiltrarContactosPorSexo(Sexo sexo)
+    {
+        std::cout << "[" << '\n';
+        for (const auto& contacto : *contactos)
+        {
+            if (contacto.sexo == sexo)
+            {
+                std::cout << "\t{" << '\n';
+                std::cout << "\t\t'nombre' : '" << contacto.nombre << "'," << '\n'
+                        << "\t\t'edad' : " << contacto.edad << "," << '\n'
+                        << "\t\t'telefono' : '" << contacto.telefono << "'," << '\n'
+                        << "\t\t'email' : '" << contacto.email << "'," << '\n'
+                        << "\t\t'sexo' : " << (int)contacto.sexo << '\n';
+                std::cout << "\t}" << '\n';
+            }
+        }
+        std::cout << "]" << '\n';
+    }
 }
-
