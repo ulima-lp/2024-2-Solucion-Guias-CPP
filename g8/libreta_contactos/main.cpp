@@ -4,7 +4,7 @@ using namespace ULContactos;
 
 int main()
 {
-    LibretaContactosXML libreta;
+    LibretaContactosJSON libreta;
     libreta.AgregarContacto(
         "Arturo", 20, "999888777", "arturo@gmail.com", Sexo::Masculino
     );
